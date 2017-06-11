@@ -1,8 +1,19 @@
 body {
     padding-top: 50px;
+    background-color: #d9edf7;
+}
+
+.jumbotron {
+    background-color: #245269 !important;
+    color: white;
 }
 
 .starter-template {
     padding: 40px 15px;
     text-align: center;
+}
+
+.about-project-img {
+    margin: 0 auto;
+    width: 50%;
 }

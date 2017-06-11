@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="common/fragments :: common-header"></head>
+
+<body>
+
+<div th:replace="common/fragments :: common-navigation"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron text-center">
+            <h1 th:text="#{copy.h1.text}"></h1>
+            <p class="lead" th:text="#{copy.p.lead}"></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 text-center">
+            <a href="https://www.linkedin.com/in/denis-szczukocki-a3132379/">
+                <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/7/005/0a6/0a1/153d058.jpg"
+                     class="img-circle img-responsive about-project-img" alt="denisu"/>
+
+            </a>
+            <h2>Denis Szczukocki <small>Architect</small></h2>
+            <div class="collapse-group">
+                <p class="collapse text-justify" th:text="#{copy.project.lead.intro}"></p>
+                <button class="btn btn-primary person-details-btn" th:text="#{copy.viewdetails.button}"></button>
+            </div>        </div>
+        <div class="col-lg-4 text-center">
+            <a href="https://www.linkedin.com/in/denis-szczukocki-a3132379/">
+                <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/7/005/0a6/0a1/153d058.jpg"
+                     class="img-circle img-responsive about-project-img" alt="denisu"/>
+
+            </a>
+            <h2>Denis Szczukocki <small>Manager</small></h2>
+            <div class="collapse-group">
+                <p class="collapse text-justify" th:text="#{copy.project.lead.intro}"></p>
+                <button class="btn btn-primary person-details-btn" th:text="#{copy.viewdetails.button}"></button>
+            </div>        </div>
+        <div class="col-lg-4 text-center">
+            <a href="https://www.linkedin.com/in/denis-szczukocki-a3132379/">
+                <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/7/005/0a6/0a1/153d058.jpg"
+                     class="img-circle img-responsive about-project-img" alt="denisu"/>
+
+            </a>
+            <h2>Denis Szczukocki <small>Coder</small></h2>
+            <div class="collapse-group">
+                <p class="collapse text-justify" th:text="#{copy.project.lead.intro}"></p>
+                <button class="btn btn-primary person-details-btn" th:text="#{copy.viewdetails.button}"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/fragments :: common-javascripts"></div>
+
+</body>
+</html>
