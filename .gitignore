@@ -15,6 +15,9 @@ target/
 *.iml
 *.ipr
 
+### Custom ###
+.cred
+
 ### NetBeans ###
 nbproject/private/
 build/
