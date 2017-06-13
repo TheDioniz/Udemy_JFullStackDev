@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="common/fragments :: common-header"></head>
+
+<body>
+
+<div th:replace="common/fragments :: common-navigation"></div>
+
+<div class="jumbotron text-center">
+    <div class="container">
+
+        <h1 th:text="#{index.main.callout}"></h1>
+        <p class="lead" th:text="#{index.h1.lead}"></p>
+
+    </div><!-- /.container -->
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+
+            <div class="well">
+                <div class="text-center">
+                    <h1 th:text="#{login.text}"></h1>
+                    <p class="lead" th:text="#{login.p.lead}"></p>
+                </div>
+
+                <div class="text-left">
+                    <form id="loginForm" th:action="@{/login}" method="POST">
+
+                        <div class="form-group">
+                            <label for="username" th:text="#{login.username.text}"></label>
+                            <input type="text" id="username" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" th:text="#{login.password.text}"></label>
+                            <input type="password" id="password" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" th:text="#{navbar.login.text}" class="btn btn-primary">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/fragments :: common-javascripts"></div>
+
+</body>
+</html>
