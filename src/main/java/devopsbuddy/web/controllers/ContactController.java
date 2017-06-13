@@ -1,8 +1,10 @@
 package devopsbuddy.web.controllers;
 
+import devopsbuddy.backend.service.EmailService;
 import devopsbuddy.web.domain.frontend.Feedback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +23,12 @@ public class ContactController {
 
     private static final String CONTACT_US_VIEW_NAME = "contact/contact";
 
+    /**
+     * depending on the active profile proper EmailService will be injected (Mock or Prod Ready bean)
+     */
+    @Autowired
+    private EmailService emailService;
+
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public String contactGer(Model model) {
         Feedback feedback = new Feedback();
@@ -31,6 +39,7 @@ public class ContactController {
     @RequestMapping(value = "/contact", method = RequestMethod.POST)
     public String contactPost(@ModelAttribute(FEEDBACK_MODEL_KEY) Feedback feedback) {
         log.debug("Feedback POJO contant: {}", feedback);
+        emailService.sendFeedbackEmail(feedback);
         return ContactController.CONTACT_US_VIEW_NAME;
     }
 }

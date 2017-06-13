@@ -16,7 +16,7 @@ target/
 *.ipr
 
 ### Custom ###
-.cred
+.devopsbuddy
 
 ### NetBeans ###
 nbproject/private/
