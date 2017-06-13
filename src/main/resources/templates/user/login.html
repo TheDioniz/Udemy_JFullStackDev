@@ -7,19 +7,25 @@
 
 <div th:replace="common/fragments :: common-navigation"></div>
 
-<div class="jumbotron text-center">
-    <div class="container">
-
-        <h1 th:text="#{index.main.callout}"></h1>
-        <p class="lead" th:text="#{index.h1.lead}"></p>
-
-    </div><!-- /.container -->
-</div>
-
-
 <div class="container">
+
     <div class="row">
+
         <div class="col-lg-6 col-lg-offset-3">
+
+            <div th:if="${param.error}" class="alert alert-danger alert-dismissable" role="alert">
+                <button type="submit" class="close" data-dismiss="alert" aria-label="close">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <p th:text="#{login.error.message}"></p>
+            </div>
+            <div th:if="${param.logout}" class="alert alert-success alert-dismissable">
+                <button type="submit" class="close" data-dismiss="alert">
+                    <span>x</span>
+                </button>
+                <p th:text="#{login.logout.success}"></p>
+            </div>
+
 
             <div class="well">
                 <div class="text-center">
@@ -32,12 +38,12 @@
 
                         <div class="form-group">
                             <label for="username" th:text="#{login.username.text}"></label>
-                            <input type="text" id="username" class="form-control" />
+                            <input type="text" id="username" name="username" class="form-control"/>
                         </div>
 
                         <div class="form-group">
                             <label for="password" th:text="#{login.password.text}"></label>
-                            <input type="password" id="password" class="form-control" />
+                            <input type="password" id="password" name="password" class="form-control"/>
                         </div>
 
                         <div class="form-group">
