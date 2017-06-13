@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="common/fragments :: common-header"></head>
+
+<body>
+
+<div th:replace="common/fragments :: common-navigation"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="jumbotron">
+                <div class="text-center">
+                    <h1 th:text="#{payload.h1.text}"></h1>
+                    <p class="lead" th:text="#{payload.p.lead}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/fragments :: common-javascripts"></div>
+
+</body>
+</html>
