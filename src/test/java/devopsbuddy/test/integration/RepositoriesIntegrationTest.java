@@ -7,6 +7,9 @@ import devopsbuddy.backend.persistance.domain.backend.UserRole;
 import devopsbuddy.backend.persistance.repositories.PlanRepository;
 import devopsbuddy.backend.persistance.repositories.RoleRepository;
 import devopsbuddy.backend.persistance.repositories.UserRepository;
+import devopsbuddy.enums.PlansEnum;
+import devopsbuddy.enums.RolesEnum;
+import devopsbuddy.utils.UsersUtil;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,10 +37,6 @@ public class RepositoriesIntegrationTest {
     @Autowired
     private UserRepository userRepository;
 
-    private static final int BASIC_PLAN_ID = 1;
-    private static final int BASIC_ROLE_ID = 1;
-    private static final int BASIC_USER_ID = 1;
-
     @Before
     public void init() {
         Assert.assertNotNull(planRepository);
@@ -47,34 +46,33 @@ public class RepositoriesIntegrationTest {
 
     @Test
     public void testCreateNewPlan() {
-        Plan basicPlan = createBasicPlan();
+        Plan basicPlan = createPlan(PlansEnum.BASIC);
         planRepository.save(basicPlan);
-        Plan retrievedPlan = planRepository.findOne(BASIC_PLAN_ID);
+        Plan retrievedPlan = planRepository.findOne(PlansEnum.BASIC.getId());
         Assert.assertNotNull(retrievedPlan);
     }
 
     @Test
     public void testCreateNewRole() {
-        Role userRole = createBasicRole();
+        Role userRole = createRole(RolesEnum.BASIC);
         roleRepository.save(userRole);
 
-        Role retrievedRole = roleRepository.findOne(BASIC_ROLE_ID);
+        Role retrievedRole = roleRepository.findOne(RolesEnum.BASIC.getId());
         Assert.assertNotNull(retrievedRole);
     }
 
     @Test
     public void testCreateNewUser() {
-        Plan basicPlan = createBasicPlan();
+        Plan basicPlan = createPlan(PlansEnum.BASIC);
         planRepository.save(basicPlan);
 
-        Role basicRole = createBasicRole();
+        Role basicRole = createRole(RolesEnum.BASIC);
         roleRepository.save(basicRole);
 
-        User basicUser = createBasicUser();
+        User basicUser = UsersUtil.createBasicUser();
+        basicUser.setPlan(new Plan(PlansEnum.BASIC));
 
-        UserRole userRole = new UserRole();
-        userRole.setRole(basicRole);
-        userRole.setUser(basicUser);
+        UserRole userRole = new UserRole(basicUser, basicRole);
 
         Set<UserRole> userRoles = new HashSet<>();
         userRoles.add(userRole);
@@ -101,36 +99,12 @@ public class RepositoriesIntegrationTest {
     }
 
     // PRIVATE METHODS
-    private Plan createBasicPlan() {
-        Plan plan = new Plan();
-        plan.setId(BASIC_PLAN_ID);
-        plan.setName("Basic");
-        return plan;
+    private Plan createPlan(PlansEnum plansEnum) {
+        return new Plan(plansEnum);
     }
 
-    private Role createBasicRole() {
-        Role role = new Role();
-        role.setId(BASIC_ROLE_ID);
-        role.setName("ROLE_USER");
-        return role;
-    }
-
-    private User createBasicUser() {
-
-        User basicUser = new User();
-        basicUser.setFirstName("Denis");
-        basicUser.setCountry("Poland");
-        basicUser.setPassword("secret");
-        basicUser.setEmail("denisszczukocki@o2.pl");
-        basicUser.setUsername("denis");
-        basicUser.setEnabled(true);
-        basicUser.setCountry("PL");
-        basicUser.setPhoneNumber("123456789");
-        basicUser.setDescription("A basic user");
-        basicUser.setProfileImageUrl("https://blabla.images.com/basicuser");
-        basicUser.setPlan((planRepository.findOne(BASIC_PLAN_ID)));
-
-        return basicUser;
+    private Role createRole(RolesEnum rolesEnum) {
+        return new Role(rolesEnum);
     }
 
 }
