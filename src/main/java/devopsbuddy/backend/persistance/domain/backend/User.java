@@ -25,8 +25,11 @@ public class User implements Serializable, UserDetails {
     @Id @GeneratedValue
     private long id;
 
+    @Column(unique = true)
     private String username;
     private String password;
+
+    @Column(unique = true)
     private String email;
     private String firstName;
 
