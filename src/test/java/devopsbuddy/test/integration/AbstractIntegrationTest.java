@@ -10,10 +10,12 @@ import devopsbuddy.backend.persistance.repositories.UserRepository;
 import devopsbuddy.enums.PlansEnum;
 import devopsbuddy.enums.RolesEnum;
 import devopsbuddy.utils.UserUtil;
+import org.junit.rules.TestName;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * @author TheDioniz, created on 15.06.2017.
@@ -56,5 +58,14 @@ public abstract class AbstractIntegrationTest {
 
     protected Role createRole(RolesEnum rolesEnum) {
         return new Role(rolesEnum);
+    }
+
+    protected User createUser(TestName testName) {
+        String username = testName.getMethodName() + UUID.randomUUID();
+        String email = testName.getMethodName() + "@devopsbuddy.com" + UUID.randomUUID();
+
+        User basicUser = createUser(username, email);
+
+        return userRepository.findOne(basicUser.getId());
     }
 }
