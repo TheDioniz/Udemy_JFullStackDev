@@ -48,7 +48,7 @@ public class PasswordResetTokenService {
             passwordResetToken = passwordResetTokenRepository.save(passwordResetToken);
             log.debug("Successfully created token {} for user {}", token, user.getUsername());
         } else {
-            log.warn("We couldn't find a user for the given email {}", user.getEmail());
+            log.warn("We couldn't find a user for the given email {}", email);
         }
 
         return passwordResetToken;

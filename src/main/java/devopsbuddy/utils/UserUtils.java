@@ -1,13 +1,17 @@
 package devopsbuddy.utils;
 
 import devopsbuddy.backend.persistance.domain.backend.User;
+import devopsbuddy.web.controllers.ForgotMyPasswordController;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author TheDioniz, created on 14.06.2017.
  */
-public class UserUtil {
+public class UserUtils {
 
-    private UserUtil() {
+    private UserUtils() {
         throw new AssertionError("Non instantiable");
     }
 
@@ -26,5 +30,19 @@ public class UserUtil {
         user.setProfileImageUrl("https://blabla.images.com/basicuser");
 
         return user;
+    }
+
+    public static String createPasswordResetUrl(HttpServletRequest req, long userId, String token) {
+        String passwordResetUrl =
+                    req.getScheme() + "://" +
+                    req.getServerName() + ":" +
+                    req.getServerPort() +
+                    ForgotMyPasswordController.CHANGE_PASSWORD_PATH +
+                    "?id=" +
+                    userId +
+                    "&token=" +
+                    token;
+        return passwordResetUrl;
+
     }
 }

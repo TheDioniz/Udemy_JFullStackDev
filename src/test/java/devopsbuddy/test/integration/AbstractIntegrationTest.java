@@ -9,7 +9,7 @@ import devopsbuddy.backend.persistance.repositories.RoleRepository;
 import devopsbuddy.backend.persistance.repositories.UserRepository;
 import devopsbuddy.enums.PlansEnum;
 import devopsbuddy.enums.RolesEnum;
-import devopsbuddy.utils.UserUtil;
+import devopsbuddy.utils.UserUtils;
 import org.junit.rules.TestName;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,7 +35,7 @@ public abstract class AbstractIntegrationTest {
         Plan basicPlan = createPlan(PlansEnum.BASIC);
         planRepository.save(basicPlan);
 
-        User basicUser = UserUtil.createBasicUser(username, email);
+        User basicUser = UserUtils.createBasicUser(username, email);
         basicUser.setPlan(basicPlan);
 
         Role basicRole = createRole(RolesEnum.BASIC);

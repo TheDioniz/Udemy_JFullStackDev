@@ -1,6 +1,6 @@
 package devopsbuddy;
 
-import devopsbuddy.web.i18n.I18NService;
+import devopsbuddy.backend.service.I18NService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

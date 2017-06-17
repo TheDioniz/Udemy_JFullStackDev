@@ -6,12 +6,9 @@ import devopsbuddy.backend.persistance.domain.backend.UserRole;
 import devopsbuddy.backend.service.UserService;
 import devopsbuddy.enums.PlansEnum;
 import devopsbuddy.enums.RolesEnum;
-import devopsbuddy.utils.UserUtil;
+import devopsbuddy.utils.UserUtils;
 import org.junit.rules.TestName;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +27,7 @@ public class AbstractServiceIntegrationTest {
         String email = testName.getMethodName() + "@devopsbuddy.com" + UUID.randomUUID();
 
         Set<UserRole> userRoles = new HashSet<>();
-        User basicUser = UserUtil.createBasicUser(username, email);
+        User basicUser = UserUtils.createBasicUser(username, email);
         userRoles.add(new UserRole(basicUser, new Role(RolesEnum.BASIC)));
 
         return userService.createUser(basicUser, PlansEnum.BASIC, userRoles);

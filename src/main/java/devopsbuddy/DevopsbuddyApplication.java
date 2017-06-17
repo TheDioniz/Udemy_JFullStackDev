@@ -6,7 +6,7 @@ import devopsbuddy.backend.persistance.domain.backend.UserRole;
 import devopsbuddy.backend.service.UserService;
 import devopsbuddy.enums.PlansEnum;
 import devopsbuddy.enums.RolesEnum;
-import devopsbuddy.utils.UserUtil;
+import devopsbuddy.utils.UserUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class DevopsbuddyApplication implements CommandLineRunner{
 	@Override
 	public void run(String... strings) throws Exception {
 
-		User user = UserUtil.createBasicUser(webmasterUsername, webmasterEmail);
+		User user = UserUtils.createBasicUser(webmasterUsername, webmasterEmail);
 		user.setPassword(webmasterPassword);
 		Set<UserRole> userRoles= new HashSet<>();
 		userRoles.add(new UserRole(user, new Role(RolesEnum.ADMIN)));
