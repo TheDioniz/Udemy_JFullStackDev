@@ -49,7 +49,7 @@ public class UserUtilsUnitTest {
     public void mapWebUserToDomainUser() {
 
         BasicAccountPayload webUser = podamFactory.manufacturePojoWithFullData(BasicAccountPayload.class);
-        webUser.setEmail("me@example.com");
+        webUser.setEmail("me@example.com"); // 'podam' cannot set email addresses as for now
 
         User user = UserUtils.fromWebUserToDomainUser(webUser);
         Assert.assertNotNull(user);

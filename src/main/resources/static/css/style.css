@@ -17,3 +17,7 @@ body {
     margin: 0 auto;
     width: 50%;
 }
+
+.fieldError {
+    border: 2px solid red;
+}

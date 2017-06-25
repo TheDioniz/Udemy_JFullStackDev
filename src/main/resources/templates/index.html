@@ -22,12 +22,12 @@
         <div class="col-lg-6">
             <h2 th:text="#{index.basic.membership}"></h2>
             <p th:text="#{index.basic.membership.desc}"></p>
-            <div class="btn btn-block btn-primary">Sign up with Basic</div>
+            <a th:href="@{/signup?planId=1}" class="btn btn-block btn-primary">Sign up with Basic</a>
         </div>
         <div class="col-lg-6">
             <h2 th:text="#{index.pro.membership}"></h2>
             <p th:text="#{index.pro.membership.desc}"></p>
-            <div class="btn btn-block btn-success">Sign up with Pro</div>
+            <a th:href="@{/signup?planId=2}" class="btn btn-block btn-success">Sign up with Pro</a>
         </div>
     </div>
 </div>
