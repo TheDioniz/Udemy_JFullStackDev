@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.constraints.Null;
 import java.util.Set;
 
 /**
@@ -39,6 +40,14 @@ public class UserService {
 
     @Transactional
     public User createUser(User user, PlansEnum plansEnum, Set<UserRole> userRoles) {
+
+        if (user == null) {
+            throw new NullPointerException("User cannot be null");
+        }
+
+        if (user.getPassword() == null) {
+            throw new NullPointerException("User password cannot be null");
+        }
 
         String encryptedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPassword);
@@ -70,4 +79,8 @@ public class UserService {
         userRepository.updateUserPassword(userId, password);
         log.debug("Password updated successfully for user {}", userId);
     }
+
+    public User findByUserName(String username) { return userRepository.findByUsername(username); }
+
+    public User findByEmail(String email) { return userRepository.findByEmail(email); }
 }

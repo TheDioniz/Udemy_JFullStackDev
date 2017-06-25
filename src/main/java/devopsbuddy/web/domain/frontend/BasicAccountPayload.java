@@ -31,7 +31,7 @@ public class BasicAccountPayload implements Serializable {
     @NotNull
     private String phoneNumber;
     @NotNull
-    private String ocuntry;
+    private String country;
 
     public String getEmail() {
         return email;
@@ -97,12 +97,13 @@ public class BasicAccountPayload implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getOcuntry() {
-        return ocuntry;
+
+    public String getCountry() {
+        return country;
     }
 
-    public void setOcuntry(String ocuntry) {
-        this.ocuntry = ocuntry;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
@@ -116,7 +117,7 @@ public class BasicAccountPayload implements Serializable {
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", description='").append(description).append('\'');
         sb.append(", phoneNumber='").append(phoneNumber).append('\'');
-        sb.append(", ocuntry='").append(ocuntry).append('\'');
+        sb.append(", country='").append(country).append('\'');
         sb.append('}');
         return sb.toString();
     }

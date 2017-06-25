@@ -63,6 +63,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 http.csrf().disable();
                 http.headers().frameOptions().disable();
             }
+
+            // TODO: for testing purpose in 'prod'... TO BE REMOVED
+            http.csrf().disable();
+            http.headers().frameOptions().disable();
         }
 
         http.authorizeRequests().antMatchers(PUBLIC_MATCHERS).permitAll()
